@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
+    <title>World Clock App</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <p>Select "World Clock" to view time around the globe 🌏</p>
+    <style>
+      p {
+        color: skyblue;
+        text-size: small;
+      }
+    </style>
+    <div id="root"></div>
+    <div class="container">
+      <h1><a href="https://www.timeanddate.com/worldclock/">World Clock</a></h1>
+
+      <select id="city">
+        <option value="">Select a city..</option>
+        <option value="current">Local Time Zone</option>
+        <option value="America/LosAngeles">Los Angeles</option>
+        <option value="America/New_York">New York</option>
+        <option value="Europe/Paris">Paris</option>
+        <option value="Europe/Istanbul">Istanbul</option>
+      </select>
+
+      <div id="cities">
+        <div class="city" id="los-angeles">
+          <div>
+            <h2>Los Angeles</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+        <div class="city" id="new-york">
+          <div>
+            <h2>New York</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+        <div class="city" id="paris">
+          <div>
+            <h2>Paris</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+        <div class="city" id="istanbul">
+          <div>
+            <h2>Istanbul</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+
+        <div>
+          <a href="World clock html sample.html">All cities</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      This project was coded by
+      <a href="https://aniqa-portfolio-shecodes-plus.netlify.app/"
+        >Aniqa Afzal
+      </a>
+      and is open sourced on GitHub .
+    </footer>
+    <center>
+      <video
+        controls=""
+        controlslist="nodownload"
+        muted="1"
+        loop=""
+        autoplay=""
+        preload="auto"
+      >
+        <source
+          src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/GTYSdDW/planet-earth-rotating-in-space_wj6uhr3xr__66a12f2b789e5e19867731f7f2b3aa2c__P360.mp4"
+          type="video/mp4"
+          width="500"
+          height="500"
+        />
+      </video>
+    </center>
+    <br />
+    <br />
+    <style>
+      video {
+        width: 500px;
+        height: 300px;
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 50%;
+        border: transparent;
+        position: center;
+        text-align: center;
+      }
+    </style>
+
+    <script src="src/index.js"></script>
+    <script src="src/App.js"></script>
+  </body>
+</html>
+
+<style>
+  body {
+    background: radial-gradient(
+      circle at -8.9% 51.2%,
+      rgb(255, 124, 0) 0%,
+      rgb(255, 124, 0) 15.9%,
+      rgb(255, 163, 77) 15.9%,
+      rgb(255, 163, 77) 24.4%,
+      rgb(19, 30, 37) 24.5%,
+      rgb(19, 30, 37) 66%
+    );
+  }
+  select {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: peachpuff;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+  }
+
+  .city {
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  }
+
+  .city:last-child {
+    border: none;
+  }
+
+  .date {
+    opacity: 0.7;
+  }
+
+  .time {
+    font-size: 48px;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  .time small {
+    font-size: 24px;
+    vertical-align: middle;
+    line-height: 48px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+  }
+  video {
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: center;
+    border: transparent;
+    text-align: center;
+  }
+</style>
+
+<script>
+  function updateTime() {
+    // Los Angeles
+    let losAngelesElement = document.querySelector("#los-angeles");
+    if (losAngelesElement) {
+      let losAngelesDateElement = losAngelesElement.querySelector(".date");
+      let lostAngelesTimeElement = losAngelesElement.querySelector(".time");
+      let losAngelesTime = moment().tz("America/Los_Angeles");
+
+      losAngelesDateElement.innerHTML = losAngelesTime.format("MMMM	Do YYYY");
+      lostAngelesTimeElement.innerHTML = losAngelesTime.format(
+        "h:mm:ss [<small>]A[</small>]"
+      );
+    }
+
+    // New York City
+    let newYorkElement = document.querySelector("#new-york");
+    if (newYorkElement) {
+      let newYorkDateElement = newYorkElement.querySelector(".date");
+      let newYorkTimeElement = newYorkElement.querySelector(".time");
+      let newYorkTime = moment().tz("US/New_York");
+
+      newYorkDateElement.innerHTML = newYorkTime.format("MMMM	Do YYYY");
+      newYorkTimeElement.innerHTML = newYorkTime.format(
+        "h:mm:ss [<small>]A[</small>]"
+      );
+    }
+
+    // Istanbul
+    let istanbulElement = document.querySelector("#istanbul");
+    if (istanbulElement) {
+      let istanbulDateElement = istanbulElement.querySelector(".date");
+      let istanbulTimeElement = istanbulElement.querySelector(".time");
+      let istanbulTime = moment().tz("Europe/Istanbul");
+
+      istanbulDateElement.innerHTML = istanbulTime.format("MMMM	Do YYYY");
+      istanbulTimeElement.innerHTML = istanbulTime.format(
+        "h:mm:ss [<small>]A[</small>]"
+      );
+    }
+
+    // Paris
+    let parisElement = document.querySelector("#paris");
+    if (parisElement) {
+      let parisDateElement = parisElement.querySelector(".date");
+      let parisTimeElement = parisElement.querySelector(".time");
+      let parisTime = moment().tz("Europe/Paris");
+
+      parisDateElement.innerHTML = parisTime.format("MMMM	Do YYYY");
+      parisTimeElement.innerHTML = parisTime.format(
+        "h:mm:ss [<small>]A[</small>]"
+      );
+    }
+  }
+  function updateCity(event) {
+    let cityTimeZone = event.target.value;
+    if (cityTimeZone === "current") {
+      cityTimeZone = moment.tz.guess();
+    }
+    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+    let cityTime = moment().tz(cityTimeZone);
+    let citiesElement = document.querySelector("#cities");
+
+    citiesElement.innerHTML = `
+          <div class="city">
+            <div>
+              <h2>${cityName}</h2>
+              <div class="date">${cityTime.format("MMMM	Do YYYY")}</div>
+            </div>
+            <div class="time">${cityTime.format(
+              "h:mm:ss"
+            )} <small>${cityTime.format("A")}</small></div>
+          </div>
+           <a href="World clock html sample.html">All cities</a>
+          `;
+  }
+
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  let citiesSelectElement = document.querySelector("#city");
+  citiesSelectElement.addEventListener("change", updateCity);
+</script>
