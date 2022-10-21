@@ -13,7 +13,7 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <p>Select "World Clock" to view time around the globe 🌏</p>
+    <p>View more cities at <a href="https://www.timeanddate.com/worldclock/">"World Clock"</a> to view time around the globe 🌏</p>
     <style>
       p {
         color: skyblue;
@@ -22,8 +22,7 @@
     </style>
     <div id="root"></div>
     <div class="container">
-      <h1><a href="https://www.timeanddate.com/worldclock/">World Clock</a></h1>
-
+      <h1>World Clock</h1>
       <select id="city">
         <option value="">Select a city..</option>
         <option value="current">Local Time Zone</option>
@@ -32,7 +31,6 @@
         <option value="Europe/Paris">Paris</option>
         <option value="Europe/Istanbul">Istanbul</option>
       </select>
-
       <div id="cities">
         <div class="city" id="los-angeles">
           <div>
@@ -259,7 +257,6 @@
               "h:mm:ss"
             )} <small>${cityTime.format("A")}</small></div>
           </div>
-           <a href="World clock html sample.html">All cities</a>
           `;
   }
 
